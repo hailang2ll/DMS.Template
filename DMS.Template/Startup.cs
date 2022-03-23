@@ -77,6 +77,7 @@ namespace DMS.Template
                      "DMS.Template.IService.xml"
                 };
             });
+            services.AddSqlsugarSetup(Configuration);
             ////开启redis服务
             services.AddRedisSetup();
             //开启HttpContext服务
@@ -99,7 +100,6 @@ namespace DMS.Template
 
             ////开启跨域服务
             //services.AddCorsSetup();
-            services.Replace(ServiceDescriptor.Transient<IControllerActivator, ServiceBasedControllerActivator>());
 
         }
 
