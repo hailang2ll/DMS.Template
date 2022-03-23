@@ -83,7 +83,7 @@ namespace DMS.Template
             //开启HttpContext服务
             services.AddHttpContextSetup();
             //开启身份认证服务，与api文档验证对应即可
-            services.AddAuthSetup(AuthModel.All);
+            services.AddAuthSetup();
 
 
             Permissions.IsUseIds4 = DMS.Common.AppConfig.GetValue(new string[] { "IdentityServer4", "Enabled" }).ToBool();
