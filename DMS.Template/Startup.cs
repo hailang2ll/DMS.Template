@@ -98,9 +98,6 @@ namespace DMS.Template
                 services.AddAuthenticationJWTSetup();
             }
 
-            ////¿ªÆô¿çÓò·þÎñ
-            //services.AddCorsSetup();
-
         }
 
         /// <summary>
