@@ -63,8 +63,11 @@ namespace DMS.Template
                 //使用自定义模型验证
                 options.InvalidModelStateResponseFactory = (context) =>
                 {
-                    var result = new ResponseResult();
-                    result.errmsg = string.Join(Environment.NewLine, context.ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage)));
+                    var result = new ResponseResult()
+                    {
+                        errno = 1,
+                        errmsg = string.Join(Environment.NewLine, context.ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage)))
+                    };
                     return new JsonResult(result);
                 };
             });
