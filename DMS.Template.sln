@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMS.Template", "DMS.Template\DMS.Template.csproj", "{D2728DED-DAF3-4012-9E52-86757FDBC0BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMS.Template", "DMS.Template\DMS.Template.csproj", "{D2728DED-DAF3-4012-9E52-86757FDBC0BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMS.Template.Models", "DMS.Template.Models\DMS.Template.Models.csproj", "{30E6B27F-5727-46FC-A473-BE7E549EFAC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMS.Template.Models", "DMS.Template.Models\DMS.Template.Models.csproj", "{30E6B27F-5727-46FC-A473-BE7E549EFAC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMS.Template.IService", "DMS.Template.IService\DMS.Template.IService.csproj", "{3CDF9194-5F35-46A6-9C01-7E22E1149D5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMS.Template.IService", "DMS.Template.IService\DMS.Template.IService.csproj", "{3CDF9194-5F35-46A6-9C01-7E22E1149D5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMS.Template.Service", "DMS.Template.Service\DMS.Template.Service.csproj", "{1245DB7A-7D8C-4D3E-8D21-CE63DD92D42B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMS.Template.Repository", "DMS.Template.Repository\DMS.Template.Repository.csproj", "{1456737C-3C32-4704-8E7F-3FD8040F1B35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMS.Template.Service", "DMS.Template.Service\DMS.Template.Service.csproj", "{1245DB7A-7D8C-4D3E-8D21-CE63DD92D42B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +33,6 @@ Global
 		{1245DB7A-7D8C-4D3E-8D21-CE63DD92D42B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1245DB7A-7D8C-4D3E-8D21-CE63DD92D42B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1245DB7A-7D8C-4D3E-8D21-CE63DD92D42B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1456737C-3C32-4704-8E7F-3FD8040F1B35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1456737C-3C32-4704-8E7F-3FD8040F1B35}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1456737C-3C32-4704-8E7F-3FD8040F1B35}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1456737C-3C32-4704-8E7F-3FD8040F1B35}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

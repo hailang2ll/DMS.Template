@@ -36,7 +36,7 @@ namespace DMS.Template.IService.Param
     /// <summary>
     /// 
     /// </summary>
-    public class SearchJobLogParam: PageParam
+    public class SearchJobLogParam : PageParam
     {
         /// <summary>
         /// 工作类型

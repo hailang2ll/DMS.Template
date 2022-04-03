@@ -80,11 +80,11 @@ namespace DMS.Template
                      "DMS.Template.IService.xml"
                 };
             });
-            services.AddSqlsugarSetup(Configuration);
-            ////开启redis服务
-            services.AddRedisSetup();
             //开启HttpContext服务
             services.AddHttpContextSetup();
+            services.AddSqlsugarIocSetup(Configuration);
+            //开启redis服务
+            services.AddRedisSetup();
             //开启身份认证服务，与api文档验证对应即可
             services.AddAuthSetup();
 
