@@ -221,10 +221,7 @@ namespace DMS.Template.Service
         /// <returns></returns>
         public async Task<ResponseResult<PageModel<JobLogResult>>> SearchJobLogAsync(SearchJobLogParam param)
         {
-            ResponseResult<PageModel<JobLogResult>> result = new()
-            {
-                data = new PageModel<JobLogResult>()
-            };
+            ResponseResult<PageModel<JobLogResult>> result = new();
             if (param == null || param.JobLogType <= 0)
             {
                 result.errno = 1;

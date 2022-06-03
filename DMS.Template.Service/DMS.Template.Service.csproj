@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DMS.Auth" Version="3.4.0" />
+    <PackageReference Include="DMS.Authorizations" Version="1.0.1" />
     <PackageReference Include="DMS.NLogs" Version="3.0.0" />
     <PackageReference Include="DMS.Repository" Version="1.0.0" />
   </ItemGroup>

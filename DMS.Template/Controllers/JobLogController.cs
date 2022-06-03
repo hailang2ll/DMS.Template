@@ -1,11 +1,10 @@
-﻿using DMS.Auth;
-using DMS.Auth.Oauth2;
+﻿using DMS.Authorizations.UserContext;
+using DMS.Common.Helper;
 using DMS.Common.Model.Result;
 using DMS.Redis;
 using DMS.Template.IService;
 using DMS.Template.IService.Param;
 using DMS.Template.IService.Result;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DMS.Template.Controllers
@@ -17,20 +16,19 @@ namespace DMS.Template.Controllers
     [ApiController]
     public class JobLogController : ControllerBase
     {
-
+        private readonly DMS.Authorizations.UserContext.Jwt.IUserAuth _userOauth;
         private readonly ISysJobLogService jobLogService;
-        private readonly IUserAuth userAuth;
         private readonly IRedisRepository redisRepository;
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="userOauth"></param>
         /// <param name="jobLogService"></param>
-        /// <param name="userAuth"></param>
         /// <param name="redisRepository"></param>
-        public JobLogController(ISysJobLogService jobLogService, IUserAuth userAuth, IRedisRepository redisRepository)
+        public JobLogController(DMS.Authorizations.UserContext.Jwt.IUserAuth userOauth, ISysJobLogService jobLogService, IRedisRepository redisRepository)
         {
+            _userOauth = userOauth;
             this.jobLogService = jobLogService;
-            this.userAuth = userAuth;
             this.redisRepository = redisRepository;
         }
         /// <summary>
@@ -44,8 +42,9 @@ namespace DMS.Template.Controllers
             var url = DMS.Common.AppConfig.GetValue("ProductUrl");
             var de = DMS.Common.AppConfig.GetValue(new string[] { "Logging", "LogLevel", "Default" });
 
-            var id = userAuth.ID;
-            var name = userAuth.Name;
+            var isAuth = _userOauth.IsAuthenticated();
+            var id2 = _userOauth.Uid;
+            var token = _userOauth.GetToken();
 
             var appid = Request.Headers["appid"];
             var accessToken = Request.Headers["AccessToken"];
@@ -130,9 +129,11 @@ namespace DMS.Template.Controllers
         [HttpGet("SearchJobLog")]
         public async Task<ResponseResult<PageModel<JobLogResult>>> SearchJobLogAsync([FromQuery] SearchJobLogParam param)
         {
-            var id = userAuth.ID;
-            var name = userAuth.Name;
-
+            var isAuth = _userOauth.IsAuthenticated();
+            var id2 = _userOauth.Uid;
+            var token = _userOauth.GetToken();
+            var ep = _userOauth.EpCode;
+            var ip = IPHelper.GetCurrentIp();
             return await jobLogService.SearchJobLogAsync(param);
         }
     }

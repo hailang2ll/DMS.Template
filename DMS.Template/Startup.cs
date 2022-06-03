@@ -1,18 +1,14 @@
 using Autofac;
-using DMS.Auth;
+using DMS.Authorizations.Model;
+using DMS.Authorizations.ServiceExtensions;
 using DMS.Common.Extensions;
-using DMS.Common.Helper;
 using DMS.Common.JsonHandler.JsonConverters;
 using DMS.Common.Model.Result;
-using DMS.Extensions;
-using DMS.Extensions.Authorizations.Model;
 using DMS.Extensions.ServiceExtensions;
 using DMS.NLogs.Filters;
 using DMS.Redis.Configurations;
 using DMS.Swagger;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace DMS.Template
 {
@@ -55,12 +51,9 @@ namespace DMS.Template
 
             }).AddJsonOptions(options =>
             {
-                options.JsonSerializerOptions.Converters.Add(new DateTimeJsonConverter("yyyy-MM-dd HH:mm:ss"));
-                //options.JsonSerializerOptions.PropertyNamingPolicy = null;
-                //options.JsonSerializerOptions.DictionaryKeyPolicy = null;
+                options.JsonSerializerOptions.Converters.Add(new DateTimeJsonConverter());
             }).ConfigureApiBehaviorOptions(options =>
             {
-                //使用自定义模型验证
                 options.InvalidModelStateResponseFactory = (context) =>
                 {
                     var result = new ResponseResult()
@@ -85,8 +78,8 @@ namespace DMS.Template
             services.AddSqlsugarIocSetup(Configuration);
             //开启redis服务
             services.AddRedisSetup();
-            //开启身份认证服务，与api文档验证对应即可
-            services.AddAuthSetup();
+            //开启身份认证服务，与api文档验证对应即可，要先开启redis服务
+            services.AddUserContextSetup();
 
 
             Permissions.IsUseIds4 = DMS.Common.AppConfig.GetValue(new string[] { "IdentityServer4", "Enabled" }).ToBool();
@@ -113,8 +106,9 @@ namespace DMS.Template
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwaggerUI(true);
             }
-            app.UseSwaggerUI(DebugHelper.IsDebug(GetType()));
+           
             // CORS跨域
             app.UseCors(DMS.Common.AppConfig.GetValue(new string[] { "Cors", "PolicyName" }));
             //开户静态页面
