@@ -1,4 +1,5 @@
 ﻿using DMS.Common.Model.Param;
+using System.ComponentModel.DataAnnotations;
 
 namespace DMS.Template.IService.Param
 {
@@ -7,30 +8,35 @@ namespace DMS.Template.IService.Param
     /// </summary>
     public class AddJobLogParam
     {
+
+        /// <summary>
+        /// 任务类型
+        /// </summary>
+        [Required]
+        public int JobLogType { get; set; }
+        /// <summary>
+        /// 猪血消息
+        /// </summary>
+        [Required]
+        public string Message { get; set; }
+        /// <summary>
+        /// 任务名称
+        /// </summary>
+        [Required]
+        public string Name { get; set; }
+        /// <summary>
+        /// 任务类型
+        /// </summary>
+        [Required]
+        public int? TaskLogType { get; set; }
         /// <summary>
         /// 任务时间
         /// </summary>
         public DateTime CreateTime { get; set; }
         /// <summary>
-        /// 任务类型
-        /// </summary>
-        public int JobLogType { get; set; }
-        /// <summary>
-        /// 猪血消息
-        /// </summary>
-        public string Message { get; set; }
-        /// <summary>
-        /// 任务名称
-        /// </summary>
-        public string Name { get; set; }
-        /// <summary>
         /// IP
         /// </summary>
         public string ServerIP { get; set; }
-        /// <summary>
-        /// 任务类型
-        /// </summary>
-        public int? TaskLogType { get; set; }
     }
 
     /// <summary>

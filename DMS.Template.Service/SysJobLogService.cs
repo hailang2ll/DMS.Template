@@ -14,6 +14,10 @@ namespace DMS.Template.Service
     /// </summary>
     public class SysJobLogService : BaseService<SysJoblog>, ISysJobLogService
     {
+        public Task<int> Add0(AddJobLogParam param)
+        {
+            return Task.FromResult(0);
+        }
         /// <summary>
         /// 各种新增语法
         /// </summary>
@@ -22,14 +26,7 @@ namespace DMS.Template.Service
         public async Task<ResponseResult> Add(AddJobLogParam param)
         {
             ResponseResult result = new();
-            if (param == null
-                || string.IsNullOrEmpty(param.Name)
-                || string.IsNullOrEmpty(param.Message))
-            {
-                result.errno = 1;
-                result.errmsg = "参数错误";
-                return result;
-            }
+            
             SysJoblog jobLogEntity = new()
             {
                 Name = param.Name,
@@ -37,7 +34,7 @@ namespace DMS.Template.Service
                 ServerIp = IPHelper.GetCurrentIp(),
                 TaskLogtype = param.TaskLogType.Value,
                 Message = param.Message,
-                CreateTime = DateTime.Now,
+                CreateTime = DateTime.Now, 
             };
 
             //插入返回自增列
@@ -249,5 +246,7 @@ namespace DMS.Template.Service
             result.data = await base.QueryPageList<JobLogResult>(where, param, "id desc");
             return result;
         }
+
+       
     }
 }

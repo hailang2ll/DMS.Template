@@ -8,11 +8,12 @@ namespace DMS.Template.IService
     /// 日志接口定义
     /// </summary>
     public interface ISysJobLogService
-    {/// <summary>
-     /// 异步新增
-     /// </summary>
-     /// <param name="param"></param>
-     /// <returns></returns>
+    {
+        /// <summary>
+        /// 异步新增
+        /// </summary>
+        /// <param name="param"></param>
+        /// <returns></returns>
         Task<ResponseResult> Add(AddJobLogParam param);
         /// <summary>
         /// 事物处理

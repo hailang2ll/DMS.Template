@@ -31,6 +31,7 @@ namespace DMS.Template.Controllers
             this.jobLogService = jobLogService;
             this.redisRepository = redisRepository;
         }
+
         /// <summary>
         /// 新增工作日志
         /// </summary>
